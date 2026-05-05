@@ -163,13 +163,11 @@ class LockDigit:
         self.cur_code = (self.cur_code + 1) % (self.max_num+1)
 
 class NumberLock:
-    def __init__(self, image, top_left, bottom_right, check_top_left, check_top_right, connected_door):
+    def __init__(self, image, top_left, bottom_right, connected_door):
         self.answer = []
         self.digits = []
         self.top_left = top_left
         self.bottom_right = bottom_right
-        self.check_top_left = check_top_left
-        self.check_top_right = check_top_right
         self.connected_door = connected_door
         self.image = image
         self.show_lock = False
@@ -182,10 +180,13 @@ class NumberLock:
             for digit in self.digits:
                 screen.blit(font.render(str(digit.cur_code), True, (0,0,0)), digit.location)
     def check_code(self):
+        code_right = True
         for index, answer in enumerate(self.answer):
-            if answer == self.digits[index].cur_code:
-                self.connected_door.open_door()
-                self.show_lock = False
+            if answer != self.digits[index].cur_code:
+                code_right = False
+        if code_right:
+            self.connected_door.open_door()
+            self.show_lock = False
     def click(self):
         if self.connected_door.open:
             self.connected_door.click()
@@ -195,21 +196,24 @@ class NumberLock:
             else:
                 self.show_lock = True
     def num_click(self, mouse_pos):
-        if mouse_between(self.check_top_left, self.check_top_right, mouse_pos):
-            self.check_code()
-            return
         for digit in self.digits:
             if mouse_between(digit.top_left, digit.bottom_right, mouse_pos):
                 digit.increment_code()
+                self.check_code()
                 return
     def cursor_render(self, mouse_pos):
-        if mouse_between(self.check_top_left, self.check_top_right, mouse_pos):
-            pygame.mouse.set_cursor(pygame.cursors.tri_right)
+        if mouse_between(self.top_left,self.bottom_right,mouse_pos):
+            pygame.mouse.set_cursor(pygame.cursors.diamond)
             return
-        for digit in self.digits:
-            if mouse_between(digit.top_left, digit.bottom_right, mouse_pos):
-                pygame.mouse.set_cursor(pygame.cursors.broken_x)
-                return
+        else:
+            for digit in self.digits:
+                if mouse_between(digit.top_left, digit.bottom_right, mouse_pos):
+                    pygame.mouse.set_cursor(pygame.cursors.broken_x)
+                    return
+                else:
+                    pygame.mouse.set_cursor(pygame.cursors.arrow)
+                
+        
 
 class ItemLock:
     def __init__(self, item, top_left, bottom_right, door):
@@ -289,9 +293,9 @@ class BottomText():
         elif len(text) < 30:
             self.font_size = 36
         elif len(text) < 40:
-            self.font_size = 24
+            self.font_size = 30
         else:
-            self.font_size = 12
+            self.font_size = 26
         self.text_font = pygame.font.SysFont("Arial", self.font_size)
         self.timer = 0
 

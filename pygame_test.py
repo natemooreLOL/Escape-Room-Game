@@ -26,45 +26,129 @@ running = True
 
 font = pygame.font.SysFont("Arial", 48)
 
+# victory_room = Classes_and_functions.Room('victory','images/victory.png')
+# room1 = Classes_and_functions.Room('room1','images/room1/room1.png')
+# room2 = Classes_and_functions.Room('room2','images/room2/room2.png')
+
+# room1_door1 = Classes_and_functions.Door((231,218),"images/room1/door1.png","images/room1/door1_open.png", victory_room)
+# room1_door2 = Classes_and_functions.Door((0,216),"images/room1/door2.png","images/room1/door2_open.png", room2)
+# basic_key = Classes_and_functions.Item('images/key.png','key')
+# room1_key = Classes_and_functions.ClickableItem(basic_key,(120,337),'images/room1/key.png')
+# room1_door2_keylock = Classes_and_functions.ItemLock(basic_key, (22,350), (32,360), room1_door2)
+# room1.add_door(room1_door1)
+# room1.add_door(room1_door2)
+# room1.add_object(room1_key)
+# room1.add_nonrender(room1_door2_keylock)
+
+# room2_door1 = Classes_and_functions.Door((399,160),'images/room2/door1.png','images/room2/door1_open.png', room1, True)
+# room2_door2 = Classes_and_functions.Door((0,203),'images/room2/door2.png','images/room2/door2_open.png', 0)
+# green_die = Classes_and_functions.ClickableObject('a green die', 'It reads 6', (188,342),(195,355))
+# red_die = Classes_and_functions.ClickableObject('a red die', 'it reads 3', (270,347),(280,356))
+# brown_die = Classes_and_functions.ClickableObject('a brown die', 'it reads 5',(315,328),(328,340))
+# yellow_die = Classes_and_functions.ClickableObject('a yellow die', 'it reads 1',(228,361),(240,370))
+# room2.add_door(room2_door1)
+# room2.add_door(room2_door2)
+# room2.add_nonrender(green_die)
+# room2.add_nonrender(red_die)
+# room2.add_nonrender(brown_die)
+# room2.add_nonrender(yellow_die)
+
+# room2_lock = Classes_and_functions.NumberLock('images/room2/lock.png', (72,332), (110,378), (269,148), (387,197), room2_door2)
+# room2_lock.add_digit(1, (130, 300), (116,292), (172,369), 6)
+# room2_lock.add_digit(5, (220, 300), (202,291), (258,368), 6)
+# room2_lock.add_digit(3, (300, 300), (280,290), (336,367), 6)
+# room2_lock.add_digit(6, (380, 300), (361,289), (417,366), 6)
+# room2.add_lock(room2_lock)
+
+##Add Rooms##
+room1A = Classes_and_functions.Room('room1A','images/Room_1-A/room_1-A.png')
+room1B = Classes_and_functions.Room('room1B','images/Room_1-b/background.png')
+room2 = Classes_and_functions.Room('room2','images/Room 2/room_2.PNG')
+room3 = Classes_and_functions.Room('room3','images/room3/room_3.png')
 victory_room = Classes_and_functions.Room('victory','images/victory.png')
-room1 = Classes_and_functions.Room('room1','images/room1/room1.png')
-room2 = Classes_and_functions.Room('room2','images/room2/room2.png')
 
-room1_door1 = Classes_and_functions.Door((231,218),"images/room1/door1.png","images/room1/door1_open.png", victory_room)
-room1_door2 = Classes_and_functions.Door((0,216),"images/room1/door2.png","images/room1/door2_open.png", room2)
+##Add Items##
 basic_key = Classes_and_functions.Item('images/key.png','key')
-room1_key = Classes_and_functions.ClickableItem(basic_key,(120,337),'images/room1/key.png')
-room1_door2_keylock = Classes_and_functions.ItemLock(basic_key, (22,350), (32,360), room1_door2)
-room1.add_door(room1_door1)
-room1.add_door(room1_door2)
-room1.add_object(room1_key)
-room1.add_nonrender(room1_door2_keylock)
+screwdriver = Classes_and_functions.Item('images/screwdriver.png', 'screwdriver')
 
-room2_door1 = Classes_and_functions.Door((399,160),'images/room2/door1.png','images/room2/door1_open.png', room1, True)
-room2_door2 = Classes_and_functions.Door((0,203),'images/room2/door2.png','images/room2/door2_open.png', 0)
-green_die = Classes_and_functions.ClickableObject('a green die', 'It reads 6', (188,342),(195,355))
-red_die = Classes_and_functions.ClickableObject('a red die', 'it reads 3', (270,347),(280,356))
-brown_die = Classes_and_functions.ClickableObject('a brown die', 'it reads 5',(315,328),(328,340))
-yellow_die = Classes_and_functions.ClickableObject('a yellow die', 'it reads 1',(228,361),(240,370))
-room2.add_door(room2_door1)
-room2.add_door(room2_door2)
-room2.add_nonrender(green_die)
-room2.add_nonrender(red_die)
-room2.add_nonrender(brown_die)
-room2.add_nonrender(yellow_die)
+##Components of room1A##
+arrow_right_1A = Classes_and_functions.Door((464,15),'images/Room_1-A/arrowright.png','images/Room_1-A/arrowright.png',room1B,True)
+door1_1A = Classes_and_functions.Door((63,126),'images/Room_1-A/door1closed.png','images/Room_1-A/door1open.png',room2)
+door2_1A = Classes_and_functions.Door((466,168),'images/Room_1-A/door2closed.png','images/Room_1-A/door2open.png',victory_room)
+key_1A = Classes_and_functions.ClickableItem(basic_key,(220,303),'images/Room_1-A/key.png')
+lock_door1_1A = Classes_and_functions.ItemLock(basic_key,(144,276),(165,294),door1_1A)
+##Add Components##
+room1A.add_door(arrow_right_1A)
+room1A.add_door(door1_1A)
+room1A.add_door(door2_1A)
+room1A.add_object(key_1A)
+room1A.add_nonrender(lock_door1_1A)
 
-room2_lock = Classes_and_functions.NumberLock('images/room2/lock.png', (72,332), (110,378), (269,148), (387,197), room2_door2)
-room2_lock.add_digit(1, (130, 300), (116,292), (172,369), 6)
-room2_lock.add_digit(5, (220, 300), (202,291), (258,368), 6)
-room2_lock.add_digit(3, (300, 300), (280,290), (336,367), 6)
-room2_lock.add_digit(6, (380, 300), (361,289), (417,366), 6)
-room2.add_lock(room2_lock)
+##Components of room1B##
+arrow_left_1B = Classes_and_functions.Door((0,18),'images/Room_1-B/arrow_away.PNG','images/Room_1-B/arrow_away.PNG',room1A,True)
+door_1B = Classes_and_functions.Door((0,161),'images/Room_1-B/door_closed.PNG','images/Room_1-B/door_open.PNG',victory_room)
+screwdriver_1B = Classes_and_functions.ClickableItem(screwdriver,(328,438),'images/Room_1-B/screwdriver.PNG')
+lock_1B = Classes_and_functions.NumberLock('images/Room_1-B/Escape Room lock.png',(76,285),(104,336),door_1B)
+##Add digits to lock##
+lock_1B.add_digit(5,(120,305),(105,265),(170,400))
+lock_1B.add_digit(9,(205,305),(180,265),(250,400))
+lock_1B.add_digit(6,(285,305),(260,265),(330,400))
+lock_1B.add_digit(3,(365,305),(335,265),(410,400))
+##Add Components##
+room1B.add_door(arrow_left_1B)
+room1B.add_door(door_1B)
+room1B.add_object(screwdriver_1B)
+room1B.add_lock(lock_1B)
 
-room_list.add_room(room1)
-room_list.add_room(room2)
+##Components of room2##
+door1_2 = Classes_and_functions.Door((0,119),'images/Room 2/door1closed.PNG','images/Room 2/door1open.PNG',room3)
+door2_2 = Classes_and_functions.Door((419,130),'images/Room 2/door2open.PNG','images/Room 2/door2open.PNG',room1A,True)
+lock_2 = Classes_and_functions.NumberLock('images/Room 2/lock_enlarged.png',(85,290),(117,346),door1_2)
+greendice = Classes_and_functions.ClickableObject('a green die', 'It reads four',(174,311),(193,337))
+bluedice = Classes_and_functions.ClickableObject('a blue die', 'It reads six',(260,325),(279,350))
+purpledice = Classes_and_functions.ClickableObject('a purple die', 'It reads one',(339,264),(358,289))
+orangedice = Classes_and_functions.ClickableObject('a orange die', 'It reads three',(269,421),(288,446))
+##Add digits to lock##
+lock_2.add_digit(6,(125,310),(105,265),(170,400),6)
+lock_2.add_digit(3,(205,310),(180,265),(250,400),6)
+lock_2.add_digit(1,(285,310),(260,265),(330,400),6)
+lock_2.add_digit(4,(360,310),(335,265),(410,400),6)
+##Add Components##
+room2.add_door(door1_2)
+room2.add_door(door2_2)
+room2.add_lock(lock_2)
+room2.add_nonrender(greendice)
+room2.add_nonrender(bluedice)
+room2.add_nonrender(purpledice)
+room2.add_nonrender(orangedice)
+
+#Components of room3##
+arrow_down_3 = Classes_and_functions.Door((13,455),'images/room3/arrow_down.png','images/room3/arrow_down.png',room2,True)
+vent_3 = Classes_and_functions.Door((110,244),'images/room3/vent_cover.PNG','images/room3/empty_vent.png',room3)
+##code_note_3 = Classes_and_functions.ClickableObject('a note','it reads \"5 9 6 3\"',(130,317),(194,355))
+vent_lock_check_3 = Classes_and_functions.ItemLock(screwdriver,(110,244),(238,391),vent_3)
+##Add Components##
+room3.add_door(arrow_down_3)
+room3.add_door(vent_3)
+#room3.add_nonrender(code_note_3)
+room3.add_nonrender(vent_lock_check_3)
+
+
+##Add rooms to room list##
 room_list.add_room(victory_room)
+room_list.add_room(room1A)
+room_list.add_room(room1B)
+room_list.add_room(room2)
+room_list.add_room(room3)
+##Set starting room##
+room_list.change_room(room1A)
 
-room_list.change_room(room1)
+
+#room_list.add_room(room1)
+#room_list.add_room(room2)
+#room_list.add_room(victory_room)
+
+#room_list.change_room(room1)
 
 
 while running:
