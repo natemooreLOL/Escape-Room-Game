@@ -49,6 +49,7 @@ arrow_left_1B = Classes_and_functions.Door((0,18),'images/Room_1-B/arrow_away.PN
 door_1B = Classes_and_functions.Door((0,161),'images/Room_1-B/door_closed.PNG','images/Room_1-B/door_open.PNG',victory_room)
 screwdriver_1B = Classes_and_functions.ClickableItem(screwdriver,(328,438),'images/Room_1-B/screwdriver.PNG')
 lock_1B = Classes_and_functions.NumberLock('images/Room_1-B/Escape Room lock.png',(76,285),(104,336),door_1B)
+toolbox_1B = Classes_and_functions.ClickableObject('a toolbox', 'Nothing looks useful.', (350, 375), (440, 460))
 ##Add digits to lock##
 lock_1B.add_digit(5,(120,305),(105,265),(170,400))
 lock_1B.add_digit(9,(205,305),(180,265),(250,400))
@@ -59,6 +60,7 @@ room1B.add_door(arrow_left_1B)
 room1B.add_door(door_1B)
 room1B.add_object(screwdriver_1B)
 room1B.add_lock(lock_1B)
+room1B.add_nonrender(toolbox_1B)
 
 ##Components of room2##
 door1_2 = Classes_and_functions.Door((0,119),'images/Room 2/door1closed.PNG','images/Room 2/door1open.PNG',room3)
@@ -84,13 +86,14 @@ room2.add_nonrender(orangedice)
 
 #Components of room3##
 arrow_down_3 = Classes_and_functions.Door((13,455),'images/room3/arrow_down.png','images/room3/arrow_down.png',room2,True)
-vent_3 = Classes_and_functions.Door((110,244),'images/room3/vent_cover.PNG','images/room3/empty_vent.png',room3)
+vent_3 = Classes_and_functions.Door((110,244),'images/room3/vent_cover.PNG','images/room3/empty_vent.png',room3, click_message='You can\'t open the vent right now')
+shelf_3 = Classes_and_functions.ClickableObject('a shelf','It\'s empty',(260,0),(500,440))
 ##code_note_3 = Classes_and_functions.ClickableObject('a note','it reads \"5 9 6 3\"',(130,317),(194,355))
 vent_lock_check_3 = Classes_and_functions.ItemLock(screwdriver,(110,244),(238,391),vent_3)
 ##Add Components##
 room3.add_door(arrow_down_3)
 room3.add_door(vent_3)
-#room3.add_nonrender(code_note_3)
+room3.add_nonrender(shelf_3)
 room3.add_nonrender(vent_lock_check_3)
 
 

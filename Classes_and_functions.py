@@ -60,7 +60,7 @@ class Room:
             screen.blit(self.image, (0,0))
             for obj in self.objects:
                 obj.render()
-            for door in self.doors:
+            for door in reversed(self.doors):
                 door.render()
             for lock in self.locks:
                 lock.render()
@@ -127,12 +127,10 @@ class Room:
         pygame.mouse.set_cursor(pygame.cursors.arrow)
             
 class Door:
-    def __init__(self, top_left, locked_image, unlocked_image, connected_room, open = False):
+    def __init__(self, top_left, locked_image, unlocked_image, connected_room, open = False, click_message = ''):
         self.open = open
         self.top_left = top_left
-
-        
-        #self.bottom_right = bottom_right
+        self.click_message = click_message
         self.locked_image = pygame.image.load(locked_image).convert_alpha()
         self.unlocked_image = pygame.image.load(unlocked_image).convert_alpha()
         self.bottom_right = tuple(x + y for x, y in zip(self.top_left, self.unlocked_image.get_size()))
@@ -147,6 +145,8 @@ class Door:
     def click(self):
         if self.open:
             room_list.change_room(self.connected_room)
+        else:
+            bottom_text.update_text(self.click_message)
 
 
 class LockDigit:
@@ -200,6 +200,9 @@ class NumberLock:
                 digit.increment_code()
                 self.check_code()
                 return
+        if not mouse_between((50,30), (450,470),mouse_pos):
+            self.show_lock = False
+            return
     def cursor_render(self, mouse_pos):
         if mouse_between(self.top_left,self.bottom_right,mouse_pos):
             pygame.mouse.set_cursor(pygame.cursors.diamond)
@@ -223,6 +226,8 @@ class ItemLock:
         if self.item in inventory.items:
             self.door.open_door()
             inventory.remove_item(self.item)
+        else:
+            self.door.click()
 
 
 class Item:
