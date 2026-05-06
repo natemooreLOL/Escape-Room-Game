@@ -10,4 +10,4 @@ set project environment to escape_room
 In the VSC powershell terminal
 pip instal -U pygame --user
 
-Run pygame_test.py
+Run game.py

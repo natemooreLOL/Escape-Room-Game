@@ -1,7 +1,7 @@
 import pygame
-pygame.init()
 screen = pygame.display.set_mode((500, 650))
 font = pygame.font.SysFont("Arial", 48)
+
 #Classes and functions will be made here and imported into the pygame file to reduce clutter
 
 #function to check if something is within a box (Like a mouse click)
@@ -126,7 +126,6 @@ class Room:
                     return
         pygame.mouse.set_cursor(pygame.cursors.arrow)
             
-
 class Door:
     def __init__(self, top_left, locked_image, unlocked_image, connected_room, open = False):
         self.open = open
@@ -210,11 +209,10 @@ class NumberLock:
                 if mouse_between(digit.top_left, digit.bottom_right, mouse_pos):
                     pygame.mouse.set_cursor(pygame.cursors.broken_x)
                     return
-                else:
-                    pygame.mouse.set_cursor(pygame.cursors.arrow)
-                
-        
-
+            pygame.mouse.set_cursor(pygame.cursors.arrow)
+            return
+                    
+                    
 class ItemLock:
     def __init__(self, item, top_left, bottom_right, door):
         self.item = item
@@ -225,6 +223,7 @@ class ItemLock:
         if self.item in inventory.items:
             self.door.open_door()
             inventory.remove_item(self.item)
+
 
 class Item:
     def __init__(self, image, name):
