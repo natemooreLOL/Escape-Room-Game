@@ -6,12 +6,11 @@ from Classes_and_functions import room_list
 from Classes_and_functions import inventory
 from Classes_and_functions import bottom_text
 
-#pygame.mixer.init()
-#pygame.mixer.music.load('labyrinth_escape.ogg')
-#pygame.mixer.music.set_volume(0.5) # Ears will no longer bleed when the music starts
-#pygame.mixer.music.play(-1)  # Loops the music indefinitely
-#while pygame.mixer.music.get_busy():
-#    pygame.time.Clock().tick(10)
+pygame.mixer.init()
+pygame.mixer.music.load('labyrinth_escape.ogg')
+pygame.mixer.music.set_volume(0.5) # Ears will no longer bleed when the music starts
+pygame.mixer.music.play(-1)  # Loops the music indefinitely
+
 
 
 screen = pygame.display.set_mode((500, 650))
