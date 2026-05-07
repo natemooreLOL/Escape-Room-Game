@@ -1,7 +1,6 @@
 import pygame
-screen = pygame.display.set_mode((500, 650))
 font = pygame.font.SysFont("Arial", 48)
-
+screen = pygame.display.set_mode((500, 650))
 #Classes and functions will be made here and imported into the pygame file to reduce clutter
 
 #function to check if something is within a box (Like a mouse click)
